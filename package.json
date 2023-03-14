@@ -10,6 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.0.18"
+    "@astrojs/preact": "^2.1.0",
+    "astro": "^2.0.18",
+    "preact": "^10.13.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
   }
 }
