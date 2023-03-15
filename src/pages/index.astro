@@ -1,29 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/Main";
-import Form from "../components/Form.astro";
-import Revenues from "../components/Revenues.astro";
-
-import computeYearsRevenues from "../scripts/calculation";
-
-let rev = []
-
-if (Astro.request.method === 'POST') {
-  try {
-    const data = await Astro.request.formData()
-    const price = Number(data.get("price"));
-    const newUsers = Number(data.get("newUsers"));
-    const lostUsers = Number(data.get("lostUsers"));
-
-    rev = computeYearsRevenues(price, newUsers, lostUsers)
-    console.log(rev)
-  } catch (error) {
-    console.error(error.message)
-  }
-}
 ---
 
 <Layout title="Revenues calculator">
-  <Form />
-  <Revenues revenues = {rev} />
+  <h1>Revenues Calculator</h1>
+  <Main client:load />
 </Layout>

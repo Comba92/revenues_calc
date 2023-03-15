@@ -1,14 +1,15 @@
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+import YearRevenues from "./YearRevenues";
 
 export default function Revenues({ revenues }) {
   return (
     <div>
       {
-        revenues.map((profits, year) => {
-          return profits.map((profit, month) => {
-            return <p>Year {year+1} - {monthNames[month]}: {profit}</p>
-          })
-        })
+        revenues.map((profits, year) => 
+          <div>
+            <p>Year {year+1}: {profits[11]}</p>
+            <YearRevenues revenues={profits}/>
+          </div>
+        )
       }
     </div>
   )
