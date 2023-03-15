@@ -1,4 +1,5 @@
 import YearRevenues from "./YearRevenues";
+import { printPrice } from "../scripts/utils";
 
 export default function Revenues({ revenues }) {
   return (
@@ -6,8 +7,11 @@ export default function Revenues({ revenues }) {
       {
         revenues.map((profits, year) => 
           <div>
-            <p>Year {year+1}: {profits[11]}</p>
-            <YearRevenues revenues={profits}/>
+            <p>Year {year+1}: {printPrice(profits[11])}</p>
+            { year === 0
+              ? <YearRevenues defaultVisible={true} revenues={profits}/>
+              : <YearRevenues defaultVisible={false} revenues={profits}/>
+            }
           </div>
         )
       }

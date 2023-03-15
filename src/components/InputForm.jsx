@@ -9,7 +9,6 @@ export default function InputForm({ setRevenues }) {
     const lostUsers = event.target.elements.lostUsers.value
 
     const rev = computeYearsRevenues(price, newUsers, lostUsers)
-    console.log(rev)
     setRevenues( rev )
   }
 

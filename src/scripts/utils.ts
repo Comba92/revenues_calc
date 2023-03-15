@@ -1,0 +1,1 @@
+export const printPrice = (number: number) => '$' + Intl.NumberFormat().format(number)
