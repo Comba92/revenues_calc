@@ -2,12 +2,14 @@ import YearRevenues from "./YearRevenues";
 import { printPrice } from "../scripts/utils";
 
 export default function Revenues({ revenues }) {
+  
+  
   return (
-    <div>
+    <ul class="card-grid">
       {
         revenues.map((profits, year) => 
-          <div>
-            <p>Year {year+1}: {printPrice(profits[11])}</p>
+          <div class="text-block">
+            <h2>Year {year + 1}: <strong>{printPrice(profits[11])}</strong></h2>
             { year === 0
               ? <YearRevenues defaultVisible={true} revenues={profits}/>
               : <YearRevenues defaultVisible={false} revenues={profits}/>
@@ -15,6 +17,6 @@ export default function Revenues({ revenues }) {
           </div>
         )
       }
-    </div>
+    </ul>
   )
 }

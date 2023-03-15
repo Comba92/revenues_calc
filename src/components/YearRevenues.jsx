@@ -7,14 +7,14 @@ export default function YearRevenues({ defaultVisible, revenues }) {
   const [visible, setVisible] = useState(defaultVisible)
 
   return (
-    <div>
+    <div clas="card">
       { visible 
         ?  revenues.map((profit, month) => 
-          <p>{monthNames[month]}: {printPrice(profit)}</p>
+          <span>{monthNames[month]}: <strong>{printPrice(profit)}</strong><br /></span>
         )
         : ''
       }
-      <button onClick={() => setVisible(!visible)}>
+      <button onClick={() => setVisible(!visible)} class='button-block'>
         { !visible ? 'Show full year' : 'Hide' }
       </button>
     </div>

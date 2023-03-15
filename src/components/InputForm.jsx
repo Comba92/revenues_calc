@@ -15,10 +15,14 @@ export default function InputForm({ setRevenues }) {
   return (
     <div>
       <form onSubmit={computeRevenues}>
-        <p>What's the price? <input name="price" /></p>
-        <p>How many new users? <input name="newUsers" /></p>
-        <p>How many lost users? <input name="lostUsers" /></p>
-        <button type="submit">Compute</button>
+        <p class='text-block'>What's the <strong>price</strong>? <input name="price" class="input-block"/></p>
+        <p class='text-block'>How many <strong>new users</strong>? <input name="newUsers" class="input-block" /></p>
+        <p class='text-block'>How many <strong>lost users</strong>? <input name="lostUsers" class="input-block" /></p>
+        <div style="text-align: center">
+          <button type="submit" class="button-block">
+            <h2>Compute</h2>
+          </button>
+        </div>
       </form>
     </div>
   )
