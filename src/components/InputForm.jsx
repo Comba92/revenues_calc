@@ -1,4 +1,3 @@
-import { useState } from 'preact/hooks'
 import computeYearsRevenues from '../scripts/calculation'
 
 export default function InputForm({ setRevenues }) {
