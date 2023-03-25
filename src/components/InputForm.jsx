@@ -1,5 +1,7 @@
 import computeYearsRevenues from '../scripts/calculation'
 
+import InputField from './InputField'
+
 export default function InputForm({ setRevenues }) {
   const computeRevenues = (event) => {
     event.preventDefault()
@@ -9,21 +11,22 @@ export default function InputForm({ setRevenues }) {
     const lostUsers = event.target.elements.lostUsers.value
 
     const rev = computeYearsRevenues(price, newUsers, lostUsers)
+    console.log(rev)
     setRevenues( rev )
   }
 
   return (
-    <div>
-      <form onSubmit={computeRevenues}>
-        <p class='text-block'>What's the <strong>price</strong>? <input name="price" class="input-block"/></p>
-        <p class='text-block'>How many <strong>new users</strong>? <input name="newUsers" class="input-block" /></p>
-        <p class='text-block'>How many <strong>lost users</strong>? <input name="lostUsers" class="input-block" /></p>
-        <div style="text-align: center">
-          <button type="submit" class="button-block">
-            <h2>Compute</h2>
-          </button>
+    <section className="p-6 text-gray-800">
+      <form novalidate="" action="" className="container flex flex-col mx-auto space-y-5 ng-untouched ng-pristine ng-valid shadow-sm p-3" onSubmit={computeRevenues}>
+        <fieldset className="w-full space-y-1 text-gray-800">
+          <p>What's the <strong>price</strong>? <InputField name="price" price/></p>
+          <p>How many <strong>new users</strong>? <InputField name="newUsers" /></p>
+          <p>How many <strong>lost users</strong>? <InputField name="lostUsers"/></p>
+        </fieldset>
+        <div className="flex flex-wrap justify-center">
+          <button type="submit" className="text-center px-8 py-3 font-semibold border rounded border-gray-800 text-gray-800">Compute!</button>
         </div>
       </form>
-    </div>
+    </section>
   )
 }
