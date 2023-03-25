@@ -1,3 +1,5 @@
+const YEARS_TO_SHOW = 4
+
 export default function computeYearsRevenues(
   price: number, newCostumers: number, churnedCostumers: number
 ): number[][] {
@@ -6,7 +8,7 @@ export default function computeYearsRevenues(
 
   const yearsRevenues = [ computeMonthsRevenues(monthlyProfit, monthlyLoss, 0) ]
 
-  for(let year = 1; year < 5; ++year) {
+  for (let year = 1; year < YEARS_TO_SHOW; ++year) {
     let currentYearRevenues = computeMonthsRevenues(monthlyProfit, monthlyLoss, yearsRevenues[year-1][11])
     yearsRevenues.push(currentYearRevenues)
   }

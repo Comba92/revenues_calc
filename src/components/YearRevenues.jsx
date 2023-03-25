@@ -3,20 +3,18 @@ import { printPrice } from '../scripts/utils';
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-export default function YearRevenues({ defaultVisible, revenues }) {
-  const [visible, setVisible] = useState(defaultVisible)
-
-  return (
-    <div>
-      { visible 
-        ?  revenues.map((profit, month) => 
-          <span>{monthNames[month]}: <strong>{printPrice(profit)}</strong><br /></span>
-        )
-        : ''
-      }
-      <button onClick={() => setVisible(!visible)}>
-        { !visible ? 'Show full year' : 'Hide' }
-      </button>
+const YearRevenues = ({revenues }) => (
+   <>
+    <div className = "flex flex-col items-center justify-center px-2 pb-8"> 
+      <ul className="self-stretch flex-1 space-y-2">
+        { revenues.map((profit, month) => 
+          <li className="flex justify-center space-x-2">
+            <span>{monthNames[month]}: <strong>{printPrice(profit)}</strong></span>
+          </li>
+        )}
+      </ul>
     </div>
-  )
-}
+    </>
+)
+
+export default YearRevenues
