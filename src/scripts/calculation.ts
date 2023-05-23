@@ -23,7 +23,7 @@ export default function computeYearsRevenues(
 
   let final: number[][] = []
   for(let i = 0; i<YEARS_TO_SHOW; ++i) {
-    final.push(res.slice(i*YEARS_TO_SHOW, i*YEARS_TO_SHOW + 12))
+    final.push(res.slice(i*12, i*12 + 12))
   }
 
   return final
