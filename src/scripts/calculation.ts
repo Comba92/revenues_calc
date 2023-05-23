@@ -5,17 +5,21 @@ export default function computeYearsRevenues(
 ): number[][] {
   let res: number[] = []
 
-  let currentCostumers = newCostumers - churnedCostumers
+  let currentCostumers: number = newCostumers
 
   res.push(price * currentCostumers)
   for(let i=1; i<12 * YEARS_TO_SHOW; ++i) {
+    const churnedCount = Math.round(currentCostumers * (churnedCostumers / 100))
+    console.log(currentCostumers, churnedCount, (churnedCostumers / 100))
     const month1 = price * currentCostumers
     const month2 = price * newCostumers
-    const month3 = price * churnedCostumers
+    const month3 = price * churnedCount
+    // total : 100 = x : churnedPercetnage
 
     res.push(res[i-1] + month1 + month2 - month3)
-    currentCostumers = currentCostumers + (newCostumers - churnedCostumers)
+    currentCostumers = currentCostumers + (newCostumers - churnedCount)
   }
+  console.log(res)
 
   let final: number[][] = []
   for(let i = 0; i<YEARS_TO_SHOW; ++i) {

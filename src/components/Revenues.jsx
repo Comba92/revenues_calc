@@ -1,5 +1,5 @@
 import YearRevenues from "./YearRevenues";
-import { printPrice } from "../scripts/utils";
+import { printPrice, averageRevenueOfYear } from "../scripts/utils";
 
 const Revenues = ({ revenues, monthsView }) => (
   <section className="py-2 pb-10 px-10 text-gray-800 shadow-sm">
@@ -9,7 +9,7 @@ const Revenues = ({ revenues, monthsView }) => (
         <div className="flex flex-col overflow-hidden border-2 rounded-md border-gray-700">
           <div className="flex flex-col items-center justify-center px-2 py-6 space-y-4">
             <p className="text-lg font-medium">Year {year + 1} <br /> <span className="text-xl text-gray-400">Total revenue of </span>{profits[11]}$</p>
-            <p className="text-5xl font-bold">{Math.floor(profits[11] / 12)}$
+            <p className="text-5xl font-bold">{ averageRevenueOfYear(profits) }$
               <span className="text-xl text-gray-400"> /mo</span>
             </p>
           </div>

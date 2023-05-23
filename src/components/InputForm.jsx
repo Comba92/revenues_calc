@@ -6,9 +6,9 @@ export default function InputForm({ setRevenues, monthsView, setMonthsView }) {
   const computeRevenues = (event) => {
     event.preventDefault()
     
-    const price = event.target.elements.price.value
-    const newUsers = event.target.elements.newUsers.value
-    const lostUsers = event.target.elements.lostUsers.value
+    const price = Number(event.target.elements.price.value)
+    const newUsers = Number(event.target.elements.newUsers.value)
+    const lostUsers = Number(event.target.elements.lostUsers.value)
 
     const rev = computeYearsRevenues(price, newUsers, lostUsers)
     setRevenues( rev )
@@ -27,7 +27,7 @@ export default function InputForm({ setRevenues, monthsView, setMonthsView }) {
           <p>How many <strong>new users</strong>? <InputField name="newUsers" /></p>
           <p>How many <strong>lost users</strong>? <InputField name="lostUsers"/></p>
         </fieldset>
-        <div className="flex flex-wrap justify-center space-x-4">
+        <div className="flex flex-wrap justify-center">
           <button type="submit" className="text-center px-8 py-3 font-semibold border rounded border-gray-800 text-gray-800">Compute!</button>
           <button type="button" className="text-center px-8 py-3 font-semibold border rounded border-gray-800 text-gray-800" onClick={switchMonthsView}>
             {!monthsView ? 'Show months!' : 'Hide months!'}</button>
