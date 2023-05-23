@@ -30,7 +30,7 @@ export default function InputForm({ setRevenues, monthsView, setMonthsView }) {
         <div className="flex flex-wrap justify-center space-x-4">
           <button type="submit" className="text-center px-8 py-3 font-semibold border rounded border-gray-800 text-gray-800">Compute!</button>
           <button type="button" className="text-center px-8 py-3 font-semibold border rounded border-gray-800 text-gray-800" onClick={switchMonthsView}>
-            {monthsView ? 'Show months!' : 'Hide months!'}</button>
+            {!monthsView ? 'Show months!' : 'Hide months!'}</button>
         </div>
       </form>
     </section>
