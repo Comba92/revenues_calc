@@ -3,32 +3,24 @@ const YEARS_TO_SHOW = 4
 export default function computeYearsRevenues(
   price: number, newCostumers: number, churnedCostumers: number
 ): number[][] {
-  const monthlyProfit = price * newCostumers
-  const monthlyLoss = price * churnedCostumers
+  let res: number[] = []
 
-  const yearsRevenues = [ computeMonthsRevenues(monthlyProfit, monthlyLoss, 0) ]
+  let currentCostumers = newCostumers - churnedCostumers
 
-  for (let year = 1; year < YEARS_TO_SHOW; ++year) {
-    let currentYearRevenues = computeMonthsRevenues(monthlyProfit, monthlyLoss, yearsRevenues[year-1][11])
-    yearsRevenues.push(currentYearRevenues)
+  res.push(price * currentCostumers)
+  for(let i=1; i<12 * YEARS_TO_SHOW; ++i) {
+    const month1 = price * currentCostumers
+    const month2 = price * newCostumers
+    const month3 = price * churnedCostumers
+
+    res.push(res[i-1] + month1 + month2 - month3)
+    currentCostumers = currentCostumers + (newCostumers - churnedCostumers)
   }
 
-  return yearsRevenues
-}
-
-function computeMonthsRevenues(
-  monthlyProfit: number, monthlyLoss: number, lastYearProfit: number
-): number[] {
-  const totalMonthlyProfit = monthlyProfit - monthlyLoss
-  
-  let monthsRevenues = lastYearProfit == 0 
-    ? [monthlyProfit + lastYearProfit]
-    : [lastYearProfit + totalMonthlyProfit]
-
-  for (let month = 1; month < 12; ++month) {
-    let profit = monthsRevenues[month - 1] + totalMonthlyProfit
-    monthsRevenues.push(profit)
+  let final: number[][] = []
+  for(let i = 0; i<YEARS_TO_SHOW; ++i) {
+    final.push(res.slice(i*YEARS_TO_SHOW, i*YEARS_TO_SHOW + 12))
   }
 
-  return monthsRevenues
+  return final
 }
