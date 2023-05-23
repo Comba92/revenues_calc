@@ -8,8 +8,8 @@ const Revenues = ({ revenues, monthsView }) => (
       {revenues.map( (profits, year) => 
         <div className="flex flex-col overflow-hidden border-2 rounded-md border-gray-700">
           <div className="flex flex-col items-center justify-center px-2 py-6 space-y-4">
-            <p className="text-lg font-medium">Year {year + 1} <br /> <span className="text-xl text-gray-400">Total revenue of </span>{profits[11]}$</p>
-            <p className="text-5xl font-bold">{ averageRevenueOfYear(profits) }$
+            <p className="text-lg font-medium">Year {year + 1} <br /> <span className="text-xl text-gray-400">Total revenue of </span>{printPrice(profits[11])}$</p>
+            <p className="text-5xl font-bold">{ printPrice(averageRevenueOfYear(profits)) }$
               <span className="text-xl text-gray-400"> /mo</span>
             </p>
           </div>
