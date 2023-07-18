@@ -1,9 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Main from "../components/Main";
+
 ---
 
 <Layout title="Revenues calculator">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G66QJ4Y29B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G66QJ4Y29B');
+  </script>
+
   <header class="container px-4 pt-10 mx-auto text-center md:px-10 lg:px-32">
     <h1 class="text-4xl font-bold leading-none sm:text-5xl"><span>Revenues</span> Calculator</h1>
   </header>
